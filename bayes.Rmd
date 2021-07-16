@@ -1,5 +1,5 @@
 ---
-title: "Bayesian Statistics"
+title: "Bayesian Statistics by "
 output: html_notebook
 ---
 
