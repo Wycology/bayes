@@ -44,7 +44,7 @@ nrow(get_parameters(model))
 ggplot(posteriors, aes(x = male)) +
   geom_density(fill = 'purple')
 ```
-<font size = '6'>A visual comparison of `median`, `map_estimate`, and `mean` of posterior in **Bayesian Statistics** of `bank_salary` data.set in **`R`**. The data.set comes with `bayesutils` package [@R-bayesutils] version `r packageVersion('bayesutils')`. Modeled using `rstanarm` package [@R-rstanarm] version `r packageVersion('rstanarm')` and plotted using `ggplot2` package [@ggplot22016] version `r packageVersion('ggplot2')` in `R` Statistical package version 4.1.0 a.k.a `Camp Pontanezen`</font>. 
+<font size = '6'>A visual comparison of `median`, `map_estimate`, and `mean` of posterior in **Bayesian Statistics** of `bank_salary` data.set in **`R`**. The data.set comes with `bayesutils` package [@R-bayesutils] version `r packageVersion('bayesutils')`. Modeled using `rstanarm` package [@R-rstanarm] version `r packageVersion('rstanarm')` and plotted using `ggplot2` package [@ggplot22016] version `r packageVersion('ggplot2')` in `R` Statistical package version 4.1.0 also known.a `Camp Pontanezen`</font>. 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE}
 ggplot(posteriors, aes(x = male)) +
   geom_density(fill = "purple") +
