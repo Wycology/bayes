@@ -1,35 +1,51 @@
 ---
-title: "Bayesian Statistics by "
-output: html_notebook
+title: "<center>Bayesian Statistics is 'Bae'</center>"
+author: "<center>Wyclife Agumba Oluoch  (wyclifeoluoch@gmail.com)</center>"
+date: '<center>Date: `r Sys.time()`</center>'
+output:
+  html_document:
+    df_print: paged
+  html_notebook:
+    df_print: paged
+bibliography: packages.bib
+nocite: '@*'
 ---
 
-This is an [R Markdown](http://rmarkdown.rstudio.com) Notebook. Traveling the universe of Bayesian statistics. 
-
-```{r, echo=FALSE, warning=FALSE, message=FALSE}
-library(bayesplot)
-library(bayestestR)
-library(bayesutils)
-library(BayesFactor)
-library(rstanarm)
-library(insight)
-library(tidyverse)
+```{r libs, echo=FALSE, warning=FALSE, message=FALSE, include=FALSE}
+packages <- c("bayesutils",
+              'bayestestR',
+              'insight',
+              "rstanarm",
+              "ggplot2")
+installed_packages <- packages %in% rownames(installed.packages())
+if(any(installed_packages == FALSE)){
+  install.packages(packages[!installed_packages])
+}
+lapply(packages, library, character.only = TRUE) |> 
+  invisible()
 ```
-```{r}
+
+```{r write_bib, echo=FALSE, warning=FALSE, message=FALSE, include=FALSE}
+knitr::write_bib(c(
+  .packages(), packages
+), 'packages.bib')
+```
+
+
+```{r, echo=FALSE, warning=FALSE, message=FALSE, include=FALSE}
 model <- stan_glm(bsalary ~., data = bank_salary, chains = 2, iter = 10000, warmup = 5000)
 posteriors <- get_parameters(model)
 desc <- describe_posterior(model)
 print(desc)
 head(get_parameters(model))
 nrow(get_parameters(model))
-
+```
+```{r, echo=FALSE, warning=FALSE, message=FALSE, include=FALSE}
 ggplot(posteriors, aes(x = male)) +
   geom_density(fill = 'purple')
 ```
-
-
-
-The plot
-```{r}
+<font size = '5'>A visual comparison of `median`, `map_estimate`, and `mean` of posterior in **Bayesian Statistics** of `bank_salary` data.set in **`R`**. The data.set comes with `bayesutils` package [@R-bayesutils] version `r packageVersion('bayesutils')`. Modeled using `rstanarm` package [@R-rstanarm] version `r packageVersion('rstanarm')` and plotted using `ggplot2` package [@ggplot22016] version `r packageVersion('ggplot2')` in `R` Statistical package version 4.1.0 a.k.a `Camp Pontanezen`</font>. 
+```{r, echo=FALSE, warning=FALSE, message=FALSE}
 ggplot(posteriors, aes(x = male)) +
   geom_density(fill = "purple") +
   # The mean in blue
@@ -42,4 +58,4 @@ ggplot(posteriors, aes(x = male)) +
   geom_vline(xintercept = map_estimate(posteriors$male), 
              color = "orange", size = 1)
 ```
-
+# References
