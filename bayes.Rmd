@@ -37,8 +37,8 @@ model <- rstanarm::stan_glm(bsalary ~., data = bank_salary, chains = 2, iter = 1
 posteriors <- insight::get_parameters(model)
 desc <- bayestestR::describe_posterior(model)
 print(desc)
-head(get_parameters(model))
-nrow(get_parameters(model))
+head(insight::get_parameters(model))
+nrow(insight::get_parameters(model))
 ```
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, include=FALSE}
 ggplot(posteriors, aes(x = male)) +
