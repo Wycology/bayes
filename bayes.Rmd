@@ -33,7 +33,7 @@ knitr::write_bib(c(
 
 
 ```{r, echo=FALSE, warning=FALSE, message=FALSE, include=FALSE}
-model <- stan_glm(bsalary ~., data = bank_salary, chains = 2, iter = 10000, warmup = 5000)
+model <- rstanarm::stan_glm(bsalary ~., data = bank_salary, chains = 2, iter = 10000, warmup = 5000)
 posteriors <- get_parameters(model)
 desc <- describe_posterior(model)
 print(desc)
